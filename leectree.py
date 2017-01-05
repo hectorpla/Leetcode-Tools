@@ -17,7 +17,7 @@ import random, sys, argparse
 #         quit()
 # if argc == 4:
 #     max_val = int(argv[3])
-parser = argparse.ArgumentParser(description='Randomly generate a list number')
+parser = argparse.ArgumentParser(description='Randomly generate binary tree')
 parser.add_argument('-n', metavar = 'N', type=int, default=10)
 parser.add_argument('-max', metavar = 'Max', type=int, default=100)
 parser.add_argument('-w', metavar = 'Null_Weight', type=float, default=0.2)

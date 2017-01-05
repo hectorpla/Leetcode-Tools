@@ -1,21 +1,31 @@
 # generate a BST (displayed as Leetcode tree)
-import random, sys, math
+import random, sys, math, argparse
 
-MIN = 0
-MAX = 15
+# MIN = 0
+# MAX = 15
 
-argv = sys.argv
-argc = int(len(argv))
-# print(argc)
-if argc == 1:
-    pass
-elif argc == 3:
-    MIN = int(argv[1])
-    MAX = int(argv[2])
-else:
-    print('Usage: genBST [min max]')
-    quit()
+# argv = sys.argv
+# argc = int(len(argv))
+# # print(argc)
+# if argc == 1:
+#     pass
+# elif argc == 3:
+#     MIN = int(argv[1])
+#     MAX = int(argv[2])
+# else:
+#     print('Usage: genBST [min max]')
+#     quit()
 
+parser = argparse.ArgumentParser(description='Randomly generate a list number')
+parser.add_argument('-n', metavar = 'N', type=int, default=10)
+parser.add_argument('-min', metavar = 'Min', type=int, default=0)
+parser.add_argument('-max', metavar = 'Max', type=int, default=15)
+parser.add_argument('-sym', metavar = 'Null_Symbol', type=str, default='null')
+args = parser.parse_args()
+
+MIN = args.min
+MAX = args.max
+null_sym = args.sym
 # list that contain message of whether a number is assigned to a node
 assigned = [False] * MAX
 
@@ -53,8 +63,8 @@ def trav_by_level(root):
      
      while ( len(q) ):
         node = q.pop(0)
-        if ( node == None):
-            print('null,', end='')
+        if ( node == None ):
+            print(null_sym + ',', end='')
             continue
         print(str(node.val) + ',', end = '')
         q.append(node.left)
